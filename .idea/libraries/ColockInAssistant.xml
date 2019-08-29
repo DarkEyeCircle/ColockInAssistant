@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ColockInAssistant">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/java-json.jar!/" />
+    </SOURCES>
+  </library>
+</component>
