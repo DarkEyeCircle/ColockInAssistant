@@ -22,6 +22,8 @@ public class ColockInManager {
 
     //双休日是否需要打卡
     private static final boolean NEED_C0LOCKIN_FOR_WEEKENDS = false;
+    //打卡失败重试次数
+    private static final int RETRY_NUM = 3;
     //日期过滤
     private static final String[] DATE_FILETER = {"星期六", "星期日"};
     private static final String CHECK_CODE_PATH = "D:/ColockInAssistant/temp/";
@@ -122,7 +124,7 @@ public class ColockInManager {
     //打卡操作
     private void clockInAction(User user) {
         int count = 0;
-        while (count < 3) {
+        while (count < RETRY_NUM) {
             try {
                 print(user.getAlias() + "-Start");
                 // 模拟一个浏览器
