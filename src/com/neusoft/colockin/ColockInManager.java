@@ -20,8 +20,6 @@ import java.util.*;
 
 public class ColockInManager {
 
-    //时间间隔(24h)
-    //private static final long PERIOD_DAY = 24 * 60 * 60 * 1000;
     //双休日是否需要打卡
     private static final boolean NEED_C0LOCKIN_FOR_WEEKENDS = false;
     //日期过滤
@@ -42,7 +40,7 @@ public class ColockInManager {
     //执行打卡任务
     public void executeColockInTask() {
         executeWorkOnColockInTask();
-//        executeWorkOffColockInTask();
+        executeWorkOffColockInTask();
         isFirstRun = false;
         List<User> userList = getUserList();
         for (User user : userList) {
@@ -255,8 +253,8 @@ public class ColockInManager {
             } catch (Throwable e) {
                 e.printStackTrace();
             } finally {
-//                executeWorkOnColockInTask();
-                System.exit(0);
+                executeWorkOnColockInTask();
+//                System.exit(0);
             }
         }
     }
@@ -279,8 +277,8 @@ public class ColockInManager {
             } catch (Throwable e) {
                 e.printStackTrace();
             } finally {
-                //executeWorkOffColockInTask();
-                System.exit(0);
+                executeWorkOffColockInTask();
+//                System.exit(0);
             }
         }
     }
@@ -490,9 +488,6 @@ public class ColockInManager {
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i < 200; i++) {
-            print("-----------------------------------------");
-        }
         new ColockInManager().executeColockInTask();
 
     }
