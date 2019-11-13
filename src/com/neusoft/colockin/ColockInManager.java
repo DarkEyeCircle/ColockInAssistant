@@ -187,17 +187,19 @@ public class ColockInManager {
                 login.focus();
                 //登陆操作
                 HtmlPage attendancePage = login.click();
-                HtmlAnchor htmlAnchor = attendancePage.querySelector(".mr36");
+
+                //HtmlAnchor htmlAnchor = attendancePage.querySelector("mr36");
+                DomNode domNode = attendancePage.querySelector(".kq-btn.pt43.clear");
+                DomNodeList<DomNode> a = domNode.querySelectorAll("a");
                 print(user.getUserName() + "登陆成功");
                 //打卡操作
                 Thread.sleep(2000);
-                htmlAnchor.click();
+                HtmlAnchor colock = (HtmlAnchor) a.get(0);
+                colock.click();
                 Thread.sleep(2000);
                 //退出操作
-              /*  DomNode domNode = attendancePage.querySelector(".kq-btn");
-                DomNodeList<DomNode> a = domNode.querySelectorAll("a");
-                HtmlAnchor exit = (HtmlAnchor) a.get(1);
-                exit.click();*/
+//                HtmlAnchor exit = (HtmlAnchor) a.get(1);
+//                exit.click();
                 //关闭webclient
                 webClient.close();
                 print(user.getAlias() + "-END");
@@ -491,7 +493,6 @@ public class ColockInManager {
 
     public static void main(String[] args) {
         new ColockInManager().executeColockInTask();
-
     }
 
 }
